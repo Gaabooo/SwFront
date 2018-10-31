@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Star Wars Planets</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field *ngIf="planets">
+      <mat-select placeholder="Order By" [(ngModel)]="selectedOrder" (ngModelChange)="sortPlanets($event)">
+        <mat-option matInput *ngFor="let order of orders" [value]="order">
+          {{order.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-list>
+      <mat-list-item *ngFor="let planet of planets">
+        <h3 matLine><strong>Planet:</strong> {{planet.name | uppercase}} </h3>
+        <p matLine>
+          <span><strong>Diameter:</strong> {{planet.diameter}} Kilometers</span>
+          <span> -- </span>
+          <span><strong>Population:</strong> {{planet.population}} Sentient beings</span>
+        </p>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
